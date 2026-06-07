@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctp7tbxw8d28b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vy5r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5njij"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Trampa" type="StaticBody3D" unique_id=1049589165 groups=["trampa"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=964601265]
+shape = SubResource("BoxShape3D_1vy5r")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=808945984]
+use_collision = true
+material = SubResource("StandardMaterial3D_5njij")

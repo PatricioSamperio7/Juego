@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c84hkh0ga4shf"]
+
+[ext_resource type="Script" uid="uid://sbd54m66rygp" path="res://swarm_agent.gd" id="1_wxdti"]
+[ext_resource type="AudioStream" uid="uid://br1hso3vx2rd7" path="res://freesound_community-shoot02wav-14562.wav" id="2_frv7v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxdti"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_frv7v"]
+material = SubResource("StandardMaterial3D_wxdti")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3fu2x"]
+radius = 15.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxdti"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3fu2x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frv7v"]
+albedo_color = Color(1, 0.49411765, 0.043137256, 1)
+emission_enabled = true
+emission = Color(1, 0.83137256, 0.15686275, 1)
+emission_energy_multiplier = 1.97
+
+[sub_resource type="BoxMesh" id="BoxMesh_ukipd"]
+material = SubResource("StandardMaterial3D_frv7v")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="SwarmAgent" type="CharacterBody3D" unique_id=1326163702 groups=["jugador"]]
+script = ExtResource("1_wxdti")
+
+[node name="ChasisVisual" type="MeshInstance3D" parent="." unique_id=318641095]
+mesh = SubResource("BoxMesh_frv7v")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=191244655]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1215352975]
+shape = SubResource("SphereShape3D_3fu2x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=216519047]
+shape = SubResource("BoxShape3D_wxdti")
+
+[node name="SfxFalla" type="AudioStreamPlayer3D" parent="." unique_id=408255206]
+stream = ExtResource("2_frv7v")
+volume_db = -0.808
+
+[node name="Chispas" type="GPUParticles3D" parent="." unique_id=1220899899]
+emitting = false
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_3fu2x")
+draw_pass_1 = SubResource("BoxMesh_ukipd")

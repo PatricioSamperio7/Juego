@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cvxci2rjvwwl8"]
+
+[ext_resource type="Script" uid="uid://dob5vp83ga0qv" path="res://coleccionable.gd" id="1_3k6sp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_islhv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3k6sp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nselu"]
+emission_enabled = true
+emission = Color(0, 0, 0.8, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bqfo1"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 100.0
+
+[node name="Area3D" type="Area3D" unique_id=330823236]
+script = ExtResource("1_3k6sp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1694661165]
+shape = SubResource("SphereShape3D_islhv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=2048392934]
+mesh = SubResource("SphereMesh_3k6sp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1985436836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.646843, 0)
+material_override = SubResource("StandardMaterial3D_nselu")
+transparency = 0.55
+mesh = SubResource("CylinderMesh_bqfo1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

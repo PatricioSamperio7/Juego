@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b2uiono7xfis8"]
+
+[ext_resource type="Script" uid="uid://dqb77wivytqnn" path="res://meta_final.gd" id="1_y3ks1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5x5jl"]
+size = Vector3(4.451294, 2.7608643, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjlq4"]
+transparency = 1
+emission_enabled = true
+emission = Color(5.7756904e-07, 9.62615e-07, 0.82248574, 1)
+refraction_enabled = true
+refraction_texture_channel = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_115qy"]
+material = SubResource("StandardMaterial3D_qjlq4")
+size = Vector3(4.5, 3, 0.5)
+
+[node name="MetaFinal" type="Area3D" unique_id=1229113532]
+script = ExtResource("1_y3ks1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1904484730]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.08258057, 0.8804321, 0)
+shape = SubResource("BoxShape3D_5x5jl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1740374667]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.10133374, 1.0419058, 0)
+transparency = 1.0
+mesh = SubResource("BoxMesh_115qy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
